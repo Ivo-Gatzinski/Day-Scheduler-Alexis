@@ -59,4 +59,5 @@ $(document).ready(function () {
     hourSaved();
 
     setInterval(hourSaved, 60000)
+    
 })
