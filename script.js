@@ -33,29 +33,26 @@ $(document).ready(function () {
 
     //Funtion to color code time blocks to indicate whether it is in the past, present, or future
     function hourSaved() {
-        var currentTime = moment().hour();
 
-        $(".time-block").each(function () {
-            var rowHour = parseInt($(this).attr("id").split("hour"));
-            console.log(rowHour, currentTime)
+        for (i = 9; i < 18; i++) {
 
+        var rowHour = i;
+
+        currentTime = moment().format('H');
+
+        console.log(rowHour, currentTime);
+            
             if (rowHour < currentTime) {
-                $(this).addClass("past");
-                $(this).removeClass("future");
-                $(this).removeClass("present");
+                $("#" + i).addClass("past");
+                
             }
-            else if (rowHour === currentTime) {
-                $(this).removeClass("past");
-                $(this).addClass("present");
-                $(this).removeClass("future");
-            }
+            else if (rowHour > currentTime) {
+                $("#" + i).addClass("future");
+                }
             else {
-                $(this).removeClass("present");
-                $(this).removeClass("past");
-                $(this).addClass("future");
+                $("#" + i).addClass("present");
             }
-        })
-    }
+        }}
     hourSaved();
 
     setInterval(hourSaved, 60000)
